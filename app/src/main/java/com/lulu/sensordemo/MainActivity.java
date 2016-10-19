@@ -23,9 +23,20 @@ public class MainActivity extends AppCompatActivity {
         // 2. 测试部分: 获取所有的传感器, 显示出来
         if (manager != null) {
             List<Sensor> list = manager.getSensorList(Sensor.TYPE_ALL);
-            for (Sensor sensor : list) {
 
+            StringBuffer sb = new StringBuffer("传感器类型: \n");
+            sb.append("size: ").append(list.size()).append("\n");
+
+            for (Sensor sensor : list) {
+                sb.append(sensor.getName().toString()).append("\n");
             }
+            txtInfo.setText(sb.toString());
+
+            // --------------------------
+            //使用亮度传感器
+            Sensor lightSensor = manager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+
         }
 
 
